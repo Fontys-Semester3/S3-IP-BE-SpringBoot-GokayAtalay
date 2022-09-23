@@ -50,7 +50,7 @@ This software uses the following:
 
 ## Backend
 
-This repo contains the frontend portion of the project. If you would like to see the backend, visit 
+This repo contains the backend portion of the project. If you would like to see the frontend, visit 
 [Distributed-Systems-FE](https://github.com/Fontys-Semester3/S3-IP-FE-GokayAtalay)
 
 
