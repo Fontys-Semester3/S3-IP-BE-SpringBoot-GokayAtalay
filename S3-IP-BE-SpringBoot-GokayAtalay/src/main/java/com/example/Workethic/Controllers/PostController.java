@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/tasks")
 @CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
     @Autowired
