@@ -1,10 +1,16 @@
 package com.example.Workethic.Models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
     private String uuid;
     private String title;
     private String body;
@@ -15,6 +21,10 @@ public class Post {
         this.title = title;
         this.body = body;
         this.created_at = created_at;
+    }
+
+    public Post() {
+
     }
 
     public String getUuid() {

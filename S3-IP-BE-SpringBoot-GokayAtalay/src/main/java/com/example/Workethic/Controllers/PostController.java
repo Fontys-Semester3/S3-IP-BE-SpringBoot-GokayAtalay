@@ -1,6 +1,10 @@
 package com.example.Workethic.Controllers;
 
 import com.example.Workethic.Models.Post;
+import com.example.Workethic.Repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,18 +14,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
+    @Autowired
+    private PostRepository postRepository;
 
     @RequestMapping("/")
-    public List<Post> index() {
-
-        List<Post> posts = new ArrayList<>();
-
-        posts.add(new Post("dfghdkfjhg", "Ik heb iets nodig", "Ik heb iets nodig Ik heb iets nodig", LocalDateTime.now()));
-        posts.add(new Post("fdiogjdfgo", "Mijn lampen zijn kapot", "Mijn lampen zijn kapot Mijn lampen zijn kapot", LocalDateTime.now()));
-        posts.add(new Post("oruyfgnfnk", "Mijn hond praat teveel", "Mijn hond praat teveel Mijn hond praat teveel", LocalDateTime.now()));
-        posts.add(new Post("eroiutfidb", "Waarom verkopen AH & Jumbo geen Monster Energy meer gvd", "Waarom verkopen AH & Jumbo geen Monster Energy meer gvd Waarom verkopen AH & Jumbo geen Monster Energy meer gvd", LocalDateTime.now()));
-
-        return posts;
+    public ResponseEntity<?> index() {
+        List<Post> posts = postRepository.All();
+        return ResponseEntity
+                .ok()
+                .body(posts);
     }
 }
