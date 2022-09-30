@@ -1,6 +1,5 @@
 package com.example.Workethic.Models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Task {
 
     @Id
     private String uuid;
@@ -16,14 +15,14 @@ public class Post {
     private String body;
     private LocalDateTime created_at;
 
-    public Post(String uuid, String title, String body, LocalDateTime created_at) {
+    public Task(String uuid, String title, String body, LocalDateTime created_at) {
         this.uuid = uuid;
         this.title = title;
         this.body = body;
         this.created_at = created_at;
     }
 
-    public Post() {
+    public Task() {
 
     }
 
