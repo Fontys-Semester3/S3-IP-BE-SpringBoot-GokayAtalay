@@ -1,20 +1,29 @@
 package com.example.Workethic.Models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "posts")
+public class Task {
 
-public class Post {
-
+    @Id
     private String uuid;
     private String title;
     private String body;
     private LocalDateTime created_at;
 
-    public Post(String uuid, String title, String body, LocalDateTime created_at) {
+    public Task(String uuid, String title, String body, LocalDateTime created_at) {
         this.uuid = uuid;
         this.title = title;
         this.body = body;
         this.created_at = created_at;
+    }
+
+    public Task() {
+
     }
 
     public String getUuid() {
