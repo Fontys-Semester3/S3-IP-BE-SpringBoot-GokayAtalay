@@ -1,5 +1,8 @@
 package com.example.Workethic.Models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,9 +13,16 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Id
+    @Getter
     private String uuid;
+    @Getter
+    @Setter
     private String title;
+    @Getter
+    @Setter
     private String body;
+    @Getter
+    @Setter
     private LocalDateTime created_at;
 
     public Task(String uuid, String title, String body, LocalDateTime created_at) {
@@ -24,37 +34,5 @@ public class Task {
 
     public Task() {
 
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public LocalDateTime getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
     }
 }
