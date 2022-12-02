@@ -63,6 +63,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>workethic_s3</finalName>
 	</build>
 </project>
