@@ -14,6 +14,10 @@ on:
   pull_request:
     branches: [ "main", "development" ]
 
+defaults:
+  run:
+    working-directory: S3-IP-BE-SpringBoot-GokayAtalay
+
 jobs:
   build:
 
