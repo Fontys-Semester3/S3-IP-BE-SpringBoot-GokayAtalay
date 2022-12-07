@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query(value = "SELECT * FROM tasks", nativeQuery = true)
+    @Query(value = "SELECT * FROM tasks LIMIT 100", nativeQuery = true)
     List<Task> All();
 }
