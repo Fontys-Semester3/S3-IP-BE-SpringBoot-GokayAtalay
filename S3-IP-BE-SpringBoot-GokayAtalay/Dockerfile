@@ -14,6 +14,6 @@ RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -Dskip
 
 #Run
 FROM openjdk:17-alpine
-COPY --from=builder /app/target/S3-IP-BE-SpringBoot-GokayAtalay-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /app/target/Workethic-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
