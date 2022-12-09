@@ -13,7 +13,7 @@ COPY src /app/src
 RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
 
 #Run
-FROM openjdk:11-jre-slim
+FROM openjdk:17-alpine
 COPY --from=builder /app/target/S3-IP-BE-SpringBoot-GokayAtalay-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
