@@ -1,0 +1,40 @@
+version: '3.7'
+services: 
+  mysql-db:
+    container_name: mysql-db
+    image: mysql:8.0
+    networks: 
+      - workethic-network
+    environment:
+      - MYSQL_DATABASE=workethic
+      - MYSQL_ROOT_PASSWORD=
+    volumes: 
+      - dbvol:/var/lib/mysql
+    ports: 
+      - "3306:3306"
+    restart: "always"
+
+  workethic:
+    build:
+      context: .
+    container_name: workethic-backend
+    image: tendeza/workethic-backend-spring:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - "workethic-network"
+    depends_on:
+      - mysql-db
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=workethic
+      - MYSQL_PORT=3306
+
+networks:
+  workethic-network:
+    name: workethic-network
+
+volumes:
+  dbvol:
