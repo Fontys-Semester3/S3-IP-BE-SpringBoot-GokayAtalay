@@ -8,6 +8,7 @@ services:
     environment:
       - MYSQL_DATABASE=workethic
       - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes: 
       - dbvol:/var/lib/mysql
     ports: 
