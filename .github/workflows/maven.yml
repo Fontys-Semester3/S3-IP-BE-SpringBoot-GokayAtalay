@@ -23,6 +23,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_DATABASE: workethic
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        ports:
+          - 3306:3306
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -56,4 +65,4 @@ jobs:
         with:
           context: ./S3-IP-BE-SpringBoot-GokayAtalay
           push: true
-          tags: tendeza/workethic_s3:be-springboot
+          tags: tendeza/workethic-backend-spring:latest
