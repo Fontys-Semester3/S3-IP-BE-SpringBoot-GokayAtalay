@@ -1,0 +1,19 @@
+# FROM openjdk:17-jdk-alpine
+# RUN addgroup -S spring && adduser -S spring -G spring
+# USER spring:spring
+# ARG JAR_FILE=*.jar
+# COPY ${JAR_FILE} app.jar
+# EXPOSE 8080
+# ENTRYPOINT ["java","-jar","/app.jar"]
+
+#Maven Build
+FROM maven:3.8.3-openjdk-17-slim AS builder
+COPY pom.xml /app/
+COPY src /app/src
+RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package -DskipTests
+
+#Run
+FROM openjdk:17-alpine
+COPY --from=builder /app/target/Workethic-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
