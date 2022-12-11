@@ -17,7 +17,7 @@ public class Task {
     private long id;
     @Getter
     @Setter
-    private String title;
+    public String title;
     @Getter
     @Setter
     private String body;
@@ -26,8 +26,7 @@ public class Task {
     @GeneratedValue
     private LocalDateTime created_at;
 
-    public Task(long id, String title, String body) {
-        this.id = id;
+    public Task(String title, String body) {
         this.title = title;
         this.body = body;
         this.created_at = LocalDateTime.now();
