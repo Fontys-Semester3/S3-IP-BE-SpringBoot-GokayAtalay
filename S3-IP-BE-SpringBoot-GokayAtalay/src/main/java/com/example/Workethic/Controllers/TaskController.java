@@ -39,9 +39,8 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody TaskDTO requestTask) {
-        Task newTask = new Task(requestTask.title, requestTask.body);
+        Task newTask = new Task(requestTask.title, requestTask.body, requestTask.userId, requestTask.userName, requestTask.userPicture);
         Task task = taskService.createTask(newTask);
-
 
         return ResponseEntity
                 .ok()

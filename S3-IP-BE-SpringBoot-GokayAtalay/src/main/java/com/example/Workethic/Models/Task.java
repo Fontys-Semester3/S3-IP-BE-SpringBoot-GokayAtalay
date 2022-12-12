@@ -23,12 +23,24 @@ public class Task {
     private String body;
     @Getter
     @Setter
+    private String userId;
+    @Getter
+    @Setter
+    private String userName;
+    @Getter
+    @Setter
+    private String userPicture;
+    @Getter
+    @Setter
     @GeneratedValue
     private LocalDateTime created_at;
 
-    public Task(String title, String body) {
+    public Task(String title, String body, String userId, String userName, String userPicture) {
         this.title = title;
         this.body = body;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPicture = userPicture;
         this.created_at = LocalDateTime.now();
     }
 

@@ -10,5 +10,8 @@ public class TaskDTO {
     public long id;
     public String title;
     public String body;
+    public String userId;
+    public String userName;
+    public String userPicture;
     public LocalDateTime created_at;
 }
