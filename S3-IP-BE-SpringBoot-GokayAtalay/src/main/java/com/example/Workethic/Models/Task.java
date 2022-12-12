@@ -17,19 +17,30 @@ public class Task {
     private long id;
     @Getter
     @Setter
-    private String title;
+    public String title;
     @Getter
     @Setter
     private String body;
     @Getter
     @Setter
+    private String userId;
+    @Getter
+    @Setter
+    private String userName;
+    @Getter
+    @Setter
+    private String userPicture;
+    @Getter
+    @Setter
     @GeneratedValue
     private LocalDateTime created_at;
 
-    public Task(long id, String title, String body) {
-        this.id = id;
+    public Task(String title, String body, String userId, String userName, String userPicture) {
         this.title = title;
         this.body = body;
+        this.userId = userId;
+        this.userName = userName;
+        this.userPicture = userPicture;
         this.created_at = LocalDateTime.now();
     }
 

@@ -9,5 +9,4 @@ public class WorkethicApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WorkethicApplication.class, args);
 	}
-
 }

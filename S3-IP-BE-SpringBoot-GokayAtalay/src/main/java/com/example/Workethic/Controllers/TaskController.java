@@ -3,6 +3,8 @@ package com.example.Workethic.Controllers;
 import com.example.Workethic.DTO.TaskDTO;
 import com.example.Workethic.Models.Task;
 import com.example.Workethic.Repository.TaskRepository;
+import com.example.Workethic.Services.Interfaces.ITaskService;
+import com.example.Workethic.Services.TaskService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +18,11 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class TaskController {
     @Autowired
-    private TaskRepository taskRepository;
+    private ITaskService taskService;
 
     @GetMapping
     public ResponseEntity<?> index() {
-        List<Task> tasks = taskRepository.findAll();
+        List<Task> tasks = taskService.getAllTasks();
 
         return ResponseEntity
                 .ok()
@@ -29,7 +31,7 @@ public class TaskController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
-        Optional<Task> task = taskRepository.findById(id);
+        Optional<Task> task = taskService.getTaskById(id);
         return ResponseEntity
                 .ok()
                 .body(task);
@@ -37,8 +39,8 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody TaskDTO requestTask) {
-        Task newTask = new Task(requestTask.id, requestTask.title, requestTask.body);
-        Task task = taskRepository.save(newTask);
+        Task newTask = new Task(requestTask.title, requestTask.body, requestTask.userId, requestTask.userName, requestTask.userPicture);
+        Task task = taskService.createTask(newTask);
 
         return ResponseEntity
                 .ok()
