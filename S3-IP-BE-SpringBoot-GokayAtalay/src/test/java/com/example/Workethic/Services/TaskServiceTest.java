@@ -20,7 +20,7 @@ class TaskServiceTest {
 
     @Test
     void createTask() {
-        Task task = new Task("bzbz", "some more bzbz");
+        Task task = new Task("bzbz", "some more bzbz", "", "", "");
         Task returnedTask = taskService.createTask(task);
 
         assert(returnedTask).equals(task);
@@ -28,8 +28,8 @@ class TaskServiceTest {
 
     @Test
     void getAllTasks() {
-        Task task = new Task("gang", "some more gang");
-        Task task2 = new Task("gang2", "some more bzbz2");
+        Task task = new Task("gang", "some more gang", "", "", "");
+        Task task2 = new Task("gang2", "some more bzbz2", "", "", "");
         taskService.createTask(task);
         taskService.createTask(task2);
 
@@ -41,7 +41,7 @@ class TaskServiceTest {
 
     @Test
     void getTaskById() {
-        Task task = new Task("gang", "some more gang");
+        Task task = new Task("gang", "some more gang", "", "", "");
         taskService.createTask(task);
 
         Optional<Task> retrievedTask = taskService.getTaskById(1);
