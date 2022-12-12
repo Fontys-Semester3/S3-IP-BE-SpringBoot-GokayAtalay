@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class TaskServiceTest {
@@ -20,7 +21,6 @@ class TaskServiceTest {
     @Test
     void createTask() {
         Task task = new Task("bzbz", "some more bzbz");
-
         Task returnedTask = taskService.createTask(task);
 
         assert(returnedTask).equals(task);
@@ -35,16 +35,19 @@ class TaskServiceTest {
 
         List<Task> allTasks = taskService.getAllTasks();
         int count = allTasks.size();
-        boolean result = false;
 
-        if(count == 2){
-            result = true;
-        }
-
-        Assertions.assertTrue(result);
+        Assertions.assertEquals(count, 2);
     }
 
     @Test
     void getTaskById() {
+        Task task = new Task("gang", "some more gang");
+        taskService.createTask(task);
+
+        Optional<Task> retrievedTask = taskService.getTaskById(1);
+        Optional<Task> retrievedTaskWrong = taskService.getTaskById(5);
+
+        Assertions.assertFalse(retrievedTask.isEmpty());
+        Assertions.assertTrue(retrievedTaskWrong.isEmpty());
     }
 }
