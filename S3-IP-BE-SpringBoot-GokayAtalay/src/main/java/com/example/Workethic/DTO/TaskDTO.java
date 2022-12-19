@@ -14,4 +14,6 @@ public class TaskDTO {
     public String userName;
     public String userPicture;
     public LocalDateTime created_at;
+
+    public long task_priority_id;
 }
