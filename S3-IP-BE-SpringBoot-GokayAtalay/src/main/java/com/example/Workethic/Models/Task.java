@@ -1,14 +1,15 @@
 package com.example.Workethic.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "tasks")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Task {
 
     @Id
@@ -35,13 +36,19 @@ public class Task {
     @GeneratedValue
     private LocalDateTime created_at;
 
-    public Task(String title, String body, String userId, String userName, String userPicture) {
+    @Getter
+    @Setter
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TaskPriority taskPriority;
+
+    public Task(String title, String body, String userId, String userName, String userPicture,TaskPriority taskPriority) {
         this.title = title;
         this.body = body;
         this.userId = userId;
         this.userName = userName;
         this.userPicture = userPicture;
         this.created_at = LocalDateTime.now();
+        this.taskPriority = taskPriority;
     }
 
     public Task() {
